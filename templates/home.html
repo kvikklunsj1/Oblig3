@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+
+<form method="POST" action="{{url_for('login')}}">
+    {{login.csrf_token}}
+    <br>
+    {{login.username}}
+    <br>
+    {{login.passord}}
+    <br>
+    <button type="submit" class = "submitButton">Logg inn</button>
+    <a href="{{ url_for('usertype')}}">Ikke registret? Klikk her.</a>
+</form>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <h3 id = "flash">{{ message }}</h3>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Kontotype
+{% endblock %}
+
+{% block main %}
+<form method = "POST" class = "registrerForm" action="{{url_for('submitKontovalg')}}">
+    <select name="brukertype" class="textinput">
+        <option disabled selected>Brukertype</option>
+        <option value="{{url_for('admin')}}">Admin</option>
+        <option value="{{url_for('normal')}}">Normal</option>
+    </select>
+    <button type="submit" class = "submitButton">Submit</button>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Registrering
+{% endblock %}
+
+{% block main %}
+<form method="POST" action="{{url_for('regnormal')}}">
+    {{normal.csrf_token}}
+    <br>
+    {{normal.username}}
+    <br>
+    {{normal.passord}}
+    <br>
+    <button type="submit" class = "submitButton">Submit</button>
+</form>
+{% endblock %}
