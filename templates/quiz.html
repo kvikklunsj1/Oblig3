@@ -8,15 +8,20 @@ Quiz!
 {% block main %}
 
 <div>
-    <h3>Velg quiz!</h3>
     <table>
-        <th>Navn på quiz</th>
-        <th>Kort beskrivelse</th>
-        <th>Antall spørsmål</th>
-        <tr>Påskequiz</tr>
-        <tr>spørsmål om påske!</tr>
-        <tr>10</tr>
-    </table>
+        <thead>
+          <tr>
+            <th>Quiz Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for quiz_name in quiz_names %}
+          <tr>
+            <td>{{ quiz_name }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
 </div>
 
 {% endblock %}

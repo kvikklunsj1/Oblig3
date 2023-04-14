@@ -5,7 +5,7 @@ Registrering
 {% endblock %}
 
 {% block main %}
-<form method="POST" action="{{url_for('regnormal')}}">
+<form method="POST" action="{{url_for('normal')}}">
     {{normal.csrf_token}}
     <br>
     {{normal.username}}

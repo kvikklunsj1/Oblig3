@@ -39,6 +39,7 @@ def login():
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM user WHERE username = %s", (loginormalForm.username.data,))
         userInfo = cursor.fetchone()
+        what = cursor.fetchall() #nødfiks for at koden ikke skal ødelegg
         cursor.close()
         conn.close()
         if userInfo and check_password_hash(userInfo[2], loginormalForm.passord.data):
@@ -50,12 +51,18 @@ def login():
     return render_template("home.html", login=loginormalForm)
 
 
+
 @app.route("/quiz", methods=['GET', 'POST'])
 def quiz():
     if 'userID' not in session:
         flash("Vennligst logg inn!")
         return redirect(url_for(""))
     else:
+        conn = mysql.connector.connect(**dbconfig)
+        cursor = conn.cursor()
+        cursor.execute('SELECT quiz_name FROM quiz')
+
+
         return render_template("quiz.html")
     
 
